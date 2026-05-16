@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "ScheduleItem": {
+      "title": "Schedule Item",
+      "description": "A scheduled task or event in the user's calendar",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Title of the task" },
+        "description": { "type": "string", "description": "Detailed description" },
+        "date": { "type": "string", "format": "date", "description": "ISO date string" },
+        "startTime": { "type": "string", "description": "Formatted HH:mm start time" },
+        "endTime": { "type": "string", "description": "Formatted HH:mm end time" },
+        "priority": { "type": "string", "enum": ["Low", "Medium", "High"] },
+        "category": { "type": "string", "enum": ["Work", "Personal", "Health", "Education", "Other"] },
+        "status": { "type": "string", "enum": ["Pending", "In Progress", "Completed", "Cancelled"] },
+        "subtasks": {
+          "type": "array",
+          "items": { 
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "isCompleted": { "type": "boolean" }
+            }
+          }
+        },
+        "notes": { "type": "string" },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["title", "date", "startTime", "endTime", "priority", "category", "status", "userId", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "schedules/{scheduleId}": {
+      "schema": "ScheduleItem",
+      "description": "Collection of all user schedules"
+    }
+  }
+}

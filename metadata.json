@@ -1,0 +1,8 @@
+{
+  "name": "JadwalPro",
+  "description": "Aplikasi pengatur jadwal lengkap dan terperinci dengan manajemen tugas, kalender, dan statistik produktivitas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
