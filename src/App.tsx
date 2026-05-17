@@ -256,14 +256,14 @@ export default function App() {
       {/* Sidebar */}
       <aside className="w-20 lg:w-64 bg-white border-r border-zinc-200 flex flex-col hidden md:flex">
         <div className="p-6">
-          <div className="flex items-center space-x-3 mb-10">
+          <div className="flex items-center space-x-3 mb-8">
             <div className="w-10 h-10 bg-zinc-900 rounded-xl flex items-center justify-center text-white shadow-lg">
-              <CalendarIcon size={24} />
+              <CalendarIcon size={22} />
             </div>
-            <h1 className="text-xl font-bold tracking-tighter text-zinc-900 hidden lg:block font-display">Jadwal<span className="text-blue-600">PRO</span></h1>
+            <h1 className="text-lg font-bold tracking-tighter text-zinc-900 hidden lg:block font-display">Jadwal<span className="text-blue-600">PRO</span></h1>
           </div>
 
-          <nav className="space-y-2">
+          <nav className="space-y-1">
             {[
               { id: 'calendar', icon: CalendarIcon, label: 'Kalender' },
               { id: 'list', icon: CheckSquare, label: 'Tugas' },
@@ -296,52 +296,52 @@ export default function App() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="h-20 bg-white border-b border-zinc-200 flex items-center justify-between px-8 shrink-0">
-          <div className="flex items-center bg-zinc-100 px-4 py-2.5 rounded-2xl border border-zinc-200 w-96">
-            <Search size={18} className="text-zinc-400 mr-2" />
+        <header className="h-16 bg-white border-b border-zinc-200 flex items-center justify-between px-6 shrink-0">
+          <div className="flex items-center bg-zinc-100 px-4 py-2 rounded-2xl border border-zinc-200 w-80 lg:w-96 transition-all focus-within:w-[420px] focus-within:shadow-sm">
+            <Search size={16} className="text-zinc-400 mr-2" />
             <input 
               type="text" 
               placeholder="Cari agenda..." 
-              className="bg-transparent border-none outline-none text-sm w-full"
+              className="bg-transparent border-none outline-none text-xs w-full font-medium"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               id="search-input"
             />
           </div>
 
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4 lg:space-x-6">
             <div className="text-right hidden lg:block">
-              <p className="text-sm font-bold">{format(new Date(), 'EEEE, d MMMM', { locale: id })}</p>
-              <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Minggu ke-{format(new Date(), 'w')}</p>
+              <p className="text-xs font-bold">{format(new Date(), 'EEEE, d MMMM', { locale: id })}</p>
+              <p className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">Minggu ke-{format(new Date(), 'w')}</p>
             </div>
-            <div className="flex items-center space-x-3 pl-6 border-l border-zinc-200">
+            <div className="flex items-center space-x-3 pl-4 lg:pl-6 border-l border-zinc-200">
               <div className="text-right">
-                <p className="text-xs font-bold text-zinc-900">{user.displayName?.split(' ')[0]}</p>
-                <p className="text-[10px] text-zinc-400 font-bold">Pro Account</p>
+                <p className="text-[11px] font-black text-zinc-900 leading-none">{user.displayName?.split(' ')[0]}</p>
+                <p className="text-[9px] text-zinc-400 font-bold mt-0.5">Pro Account</p>
               </div>
-              <img src={user.photoURL || ''} alt="User" className="w-10 h-10 rounded-full border-2 border-white shadow-sm" />
+              <img src={user.photoURL || ''} alt="User" className="w-8 h-8 rounded-full border-2 border-white shadow-sm" />
             </div>
           </div>
         </header>
 
         {/* Bento Grid Area */}
-        <div className="flex-1 p-6 overflow-y-auto custom-scrollbar">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="flex-1 p-5 overflow-y-auto custom-scrollbar">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
             
             {/* Action Bar (Top Full Width) */}
-            <div className="md:col-span-3 flex items-center justify-between mb-2">
+            <div className="md:col-span-3 flex items-center justify-between mb-1">
               <div>
-                <h2 className="text-3xl font-black text-zinc-900 font-display">
+                <h2 className="text-2xl font-black text-zinc-900 font-display">
                   {view === 'calendar' ? 'Alur Waktu' : view === 'stats' ? 'Analisis' : 'Semua Tugas'}
                 </h2>
-                <p className="text-zinc-500 font-medium uppercase text-[10px] tracking-widest mt-1">Manajemen Jadwal Terperinci • v4.2</p>
+                <p className="text-zinc-500 font-medium uppercase text-[9px] tracking-widest mt-0.5">Manajemen Jadwal Terperinci • v4.2</p>
               </div>
               <button 
                 onClick={() => { setEditingItem(undefined); setIsFormOpen(true); }}
-                className="bg-zinc-900 text-white px-6 py-3 rounded-2xl font-bold flex items-center space-x-2 hover:bg-black transition-all shadow-xl shadow-zinc-200"
+                className="bg-zinc-900 text-white px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center space-x-2 hover:bg-black transition-all shadow-xl shadow-zinc-200"
                 id="add-task-header-btn"
               >
-                <Plus size={20} />
+                <Plus size={16} />
                 <span>TAMBAH JADWAL</span>
               </button>
             </div>
@@ -352,22 +352,22 @@ export default function App() {
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-blue-600 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-2xl shadow-blue-200"
+                className="bg-blue-600 rounded-[2rem] p-7 text-white relative overflow-hidden shadow-2xl shadow-blue-200"
               >
                 <div className="relative z-10 space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="p-2 bg-white/20 rounded-xl backdrop-blur-md">
-                      <Sparkles size={20} className="text-yellow-300" />
+                      <Sparkles size={18} className="text-yellow-300" />
                     </div>
-                    <span className="text-xs font-bold uppercase tracking-widest opacity-80">AI PRO INSIGHT</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest opacity-80">AI PRO INSIGHT</span>
                   </div>
-                  <p className="text-xl font-bold leading-snug max-w-2xl font-display">
+                  <p className="text-lg font-bold leading-snug max-w-2xl font-display">
                     {smartInsight || "Klik tombol analisis untuk mendapatkan saran koordinasi waktu paling optimal hari ini."}
                   </p>
                   <button 
                     onClick={handleGetInsight}
                     disabled={isAnalyzing}
-                    className="px-6 py-3 bg-white text-blue-600 rounded-2xl font-black text-sm hover:bg-zinc-100 transition-all flex items-center space-x-2"
+                    className="px-5 py-2.5 bg-white text-blue-600 rounded-xl font-black text-[11px] hover:bg-zinc-100 transition-all flex items-center space-x-2"
                   >
                     <span>{isAnalyzing ? 'MENGANALISIS...' : 'DAPATKAN ANALISIS'}</span>
                   </button>
@@ -376,7 +376,7 @@ export default function App() {
               </motion.div>
 
               {/* Main View (Bento Block) */}
-              <div className="bg-white rounded-[2.5rem] border border-zinc-200 shadow-sm p-8 min-h-[500px]">
+              <div className="bg-white rounded-[2rem] border border-zinc-200 shadow-sm p-6 lg:p-7 min-h-[500px]">
                 {view === 'calendar' ? (
                   <Calendar 
                     onDateSelect={setSelectedDate} 
@@ -432,15 +432,15 @@ export default function App() {
             {/* Secondary Bento Grid (Right Side) */}
             <div className="space-y-6">
               {/* Daily Schedule (Bento Block) */}
-              <div className="bg-zinc-900 text-white rounded-[2.5rem] p-8 flex flex-col min-h-[400px] shadow-2xl">
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="font-black text-lg font-display">Agenda Hari Ini</h3>
-                  <div className="w-10 h-10 rounded-2xl bg-zinc-800 flex items-center justify-center border border-zinc-700">
-                    <CalendarIcon size={20} className="text-zinc-500" />
+              <div className="bg-zinc-900 text-white rounded-[2rem] p-7 flex flex-col min-h-[400px] shadow-2xl">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="font-black text-base font-display">Agenda Hari Ini</h3>
+                  <div className="w-9 h-9 rounded-xl bg-zinc-800 flex items-center justify-center border border-zinc-700">
+                    <CalendarIcon size={18} className="text-zinc-500" />
                   </div>
                 </div>
 
-                <div className="space-y-6 flex-1">
+                <div className="space-y-5 flex-1">
                   {dayItems.length > 0 ? dayItems.map((item) => (
                     <div key={item.id} className="flex gap-4 group">
                       <div className="flex flex-col items-center">
@@ -472,30 +472,30 @@ export default function App() {
               </div>
 
               {/* Progress Card (Bento Block) */}
-              <div className="bg-white rounded-[2.5rem] p-8 border border-zinc-200 shadow-sm flex flex-col justify-between h-48">
-                <h3 className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">Efisiensi Mingguan</h3>
-                <div className="flex items-end gap-3 mt-4">
-                  <span className="text-5xl font-black font-display leading-none">84<span className="text-xl text-zinc-300 font-medium">%</span></span>
-                  <div className="flex items-center text-emerald-500 font-black text-xs mb-1">
+              <div className="bg-white rounded-[2rem] p-7 border border-zinc-200 shadow-sm flex flex-col justify-between h-44">
+                <h3 className="text-[9px] font-black text-zinc-400 uppercase tracking-[0.2em]">Efisiensi Mingguan</h3>
+                <div className="flex items-end gap-3 mt-2">
+                  <span className="text-4xl font-black font-display leading-none">84<span className="text-base text-zinc-300 font-medium">%</span></span>
+                  <div className="flex items-center text-emerald-500 font-black text-[10px] mb-1">
                     <span>+12%</span>
                   </div>
                 </div>
-                <div className="mt-4 w-full h-3 bg-zinc-100 rounded-full overflow-hidden">
+                <div className="mt-4 w-full h-2.5 bg-zinc-100 rounded-full overflow-hidden">
                   <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: '84%' }}
-                    className="h-full bg-emerald-500 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.5)]"
+                    className="h-full bg-emerald-500 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.3)]"
                   ></motion.div>
                 </div>
               </div>
 
               {/* Category Focus (Bento Block) */}
-              <div className="bg-yellow-100 rounded-[2.5rem] p-8 border border-yellow-200 shadow-sm">
+              <div className="bg-yellow-100 rounded-[2rem] p-7 border border-yellow-200 shadow-sm">
                 <div className="flex items-center gap-3 mb-4">
-                   <div className="w-10 h-10 bg-yellow-400 rounded-2xl flex items-center justify-center text-yellow-900 shadow-sm">
-                      <Bell size={20} />
+                   <div className="w-9 h-9 bg-yellow-400 rounded-xl flex items-center justify-center text-yellow-900 shadow-sm">
+                      <Bell size={18} />
                    </div>
-                   <h3 className="font-black text-sm text-yellow-900 font-display">Status Fokus</h3>
+                   <h3 className="font-black text-xs text-yellow-900 font-display">Status Fokus</h3>
                 </div>
                 <div className="space-y-4">
                   {['Pekerjaan', 'Kesehatan'].map((cat, i) => (

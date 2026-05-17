@@ -15,8 +15,8 @@ export default function Calendar({ onDateSelect, selectedDate, items }: Calendar
 
   const renderHeader = () => {
     return (
-      <div className="flex items-center justify-between px-6 py-6 bg-white border-b border-zinc-100">
-        <h2 className="text-xl font-black text-zinc-900 capitalize font-display">
+      <div className="flex items-center justify-between px-5 py-4 bg-white border-b border-zinc-100">
+        <h2 className="text-lg font-black text-zinc-900 capitalize font-display">
           {format(currentMonth, 'MMMM yyyy', { locale: id })}
         </h2>
         <div className="flex space-x-2">
@@ -44,7 +44,7 @@ export default function Calendar({ onDateSelect, selectedDate, items }: Calendar
     return (
       <div className="grid grid-cols-7 border-b border-zinc-100 bg-zinc-50/50">
         {days.map((day) => (
-          <div key={day} className="py-3 text-center text-[10px] font-black text-zinc-400 upper tracking-widest uppercase">
+          <div key={day} className="py-2 text-center text-[9px] font-black text-zinc-400 upper tracking-widest uppercase">
             {day}
           </div>
         ))}
@@ -75,18 +75,18 @@ export default function Calendar({ onDateSelect, selectedDate, items }: Calendar
         days.push(
           <div
             key={day.toString()}
-            className={`relative min-h-[100px] border-r border-b border-zinc-50 flex flex-col p-2 cursor-pointer transition-all hover:bg-blue-50/50 ${
+            className={`relative min-h-[90px] border-r border-b border-zinc-50 flex flex-col p-2 cursor-pointer transition-all hover:bg-blue-50/50 ${
               !isCurrentMonth ? "bg-zinc-50/30" : "bg-white"
             } ${isSelected ? "bg-blue-50/80 ring-2 ring-blue-600 ring-inset" : ""}`}
             onClick={() => onDateSelect(cloneDay)}
             id={`calendar-cell-${format(day, 'yyyy-MM-dd')}`}
           >
-            <span className={`text-[11px] font-bold ml-1 mt-1 ${
+            <span className={`text-[10px] font-bold ml-1 mt-0.5 ${
               !isCurrentMonth ? "text-zinc-300" : isSameDay(day, new Date()) ? "text-blue-600 font-black" : "text-zinc-900"
             }`}>
               {formattedDate}
             </span>
-            <div className="mt-2 space-y-1 overflow-hidden">
+            <div className="mt-1 space-y-1 overflow-hidden">
               {dayItems.slice(0, 3).map((item) => (
                 <div 
                   key={item.id} 
