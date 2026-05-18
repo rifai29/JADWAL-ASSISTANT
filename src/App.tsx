@@ -315,10 +315,6 @@ export default function App() {
               <p className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">Minggu ke-{format(new Date(), 'w')}</p>
             </div>
             <div className="flex items-center space-x-3 pl-4 lg:pl-6 border-l border-zinc-200">
-              <div className="text-right">
-                <p className="text-[11px] font-black text-zinc-900 leading-none">{user.displayName?.split(' ')[0]}</p>
-                <p className="text-[9px] text-zinc-400 font-bold mt-0.5">Pro Account</p>
-              </div>
               <img src={user.photoURL || ''} alt="User" className="w-8 h-8 rounded-full border-2 border-white shadow-sm" />
             </div>
           </div>
