@@ -195,57 +195,196 @@ export default function App() {
 
   if (!user) {
     return (
-      <div className="h-screen w-screen flex bg-white font-sans">
-        <div className="flex-1 flex flex-col items-center justify-center p-12 lg:p-24">
-          <div className="w-full max-w-md space-y-8">
-            <div className="flex items-center space-x-3 mb-12 justify-center lg:justify-start">
-              <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-blue-100">
-                <CalendarIcon size={28} />
+      <div className="h-screen w-screen flex bg-zinc-50 font-sans overflow-hidden">
+        {/* Left Side: Auth & Branding */}
+        <div className="flex-1 flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-20 relative z-10 bg-white shadow-2xl">
+          {/* Header & Logo */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-9 h-9 bg-zinc-950 rounded-xl flex items-center justify-center text-white shadow-md shadow-zinc-300">
+                <CalendarIcon size={18} />
               </div>
-              <h1 className="text-3xl font-black tracking-tighter text-blue-900 font-display">JadwalPro</h1>
+              <span className="text-lg font-black tracking-tighter text-zinc-900 font-display">
+                Jadwal<span className="text-blue-600">PRO</span>
+              </span>
             </div>
             
-            <div className="space-y-4 text-center lg:text-left">
-              <h2 className="text-4xl font-black text-gray-900 leading-tight font-display">
-                Kelola Waktumu Dengan <span className="text-blue-600 underline decoration-blue-200 underline-offset-8">Lebih Pintar.</span>
+            <div className="text-[10px] font-black text-zinc-400 tracking-wider bg-zinc-100 px-3 py-1 rounded-full uppercase">
+              v4.2.0 • Stable
+            </div>
+          </div>
+
+          {/* Main Hero & Auth Area */}
+          <div className="w-full max-w-md mx-auto my-auto space-y-8">
+            <div className="space-y-4">
+              <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-[10px] font-black uppercase tracking-wider">
+                <Sparkles size={12} className="animate-pulse" />
+                <span>Asisten Waktu AI Terpadu</span>
+              </div>
+              
+              <h2 className="text-3xl lg:text-4xl font-extrabold text-zinc-900 leading-tight font-display tracking-tight">
+                Kelola Waktumu Dengan <br />
+                <span className="text-blue-600 relative inline-block">
+                  Lebih Pintar.
+                  <span className="absolute left-0 bottom-1 w-full h-[3px] bg-blue-100 -z-10 rounded-full"></span>
+                </span>
               </h2>
-              <p className="text-gray-500 text-lg leading-relaxed">
-                Atur jadwal harian, pantau produktivitas, dan dapatkan saran cerdas dari AI untuk hari yang lebih efisien.
+              
+              <p className="text-zinc-500 text-sm leading-relaxed font-medium">
+                Sistem penjadwalan terpadu dengan bento grid cerdas, statistik alokasi waktu, serta asisten AI pribadi yang mengoptimalkan efisiensi harian Anda.
               </p>
             </div>
 
-            <div className="pt-8">
+            {/* Login Button */}
+            <div className="space-y-4">
               <button 
                 onClick={loginWithGoogle}
-                className="w-full py-4 px-6 bg-gray-900 text-white rounded-2xl font-bold flex items-center justify-center space-x-4 hover:bg-black transition-all shadow-xl shadow-gray-200 transform hover:-translate-y-1 active:translate-y-0"
+                className="w-full py-3.5 px-6 bg-zinc-950 text-white rounded-2xl font-bold flex items-center justify-center space-x-3 hover:bg-black hover:shadow-xl hover:shadow-zinc-300 transition-all transform hover:-translate-y-0.5 active:translate-y-0 text-xs tracking-wider uppercase active:scale-98"
                 id="login-google-btn"
               >
-                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-6 h-6" />
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-5 h-5 bg-white p-0.5 rounded-full" />
                 <span>Lanjutkan dengan Google</span>
               </button>
+              
+              <p className="text-center text-[10px] text-zinc-400 font-bold leading-relaxed">
+                Akses aman dan instan • Dengan masuk, Anda setuju dengan ketentuan layanan.
+              </p>
             </div>
 
-            <div className="pt-12 text-center text-xs text-gray-400">
-              Dengan masuk, Anda setuju dengan ketentuan layanan kami.
-            </div>
-          </div>
-        </div>
-        <div className="hidden lg:flex flex-1 bg-blue-600 p-24 items-center justify-center relative overflow-hidden">
-          <div className="relative z-10 w-full max-w-lg aspect-square bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-2xl p-8 flex flex-col justify-end">
-            <div className="space-y-6">
-              <div className="w-16 h-1 bg-white/40 rounded-full"></div>
-              <p className="text-4xl font-bold text-white font-display">"Penjadwalan yang terperinci adalah langkah awal kesuksesan."</p>
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 rounded-full bg-blue-400"></div>
+            {/* Premium Highlights */}
+            <div className="pt-8 border-t border-zinc-100 space-y-4">
+              <div className="flex items-start space-x-3">
+                <div className="w-5 h-5 rounded-lg bg-blue-50 flex items-center justify-center border border-blue-100 mt-0.5 shrink-0">
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                </div>
                 <div>
-                  <p className="font-bold text-white">Tim JadwalPro</p>
-                  <p className="text-sm text-white/60 text-indigo-100">Product Team</p>
+                  <p className="text-xs font-black text-zinc-800 leading-none">Bento Calendar Integration</p>
+                  <p className="text-[10px] text-zinc-400 mt-0.5 font-bold">Atur agenda harian dan bulanan dengan interface super seimbang.</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <div className="w-5 h-5 rounded-lg bg-emerald-50 flex items-center justify-center border border-emerald-100 mt-0.5 shrink-0">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                </div>
+                <div>
+                  <p className="text-xs font-black text-zinc-800 leading-none">Statistik & Kategori Otomatis</p>
+                  <p className="text-[10px] text-zinc-400 mt-0.5 font-bold">Lihat alokasi waktu mingguan berdasarkan pekerjaan & kesehatan.</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <div className="w-5 h-5 rounded-lg bg-purple-50 flex items-center justify-center border border-purple-100 mt-0.5 shrink-0">
+                  <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                </div>
+                <div>
+                  <p className="text-xs font-black text-zinc-800 leading-none">Rekomendasi Pintar AI Insights</p>
+                  <p className="text-[10px] text-zinc-400 mt-0.5 font-bold">Saran efisiensi instan yang disesuaikan dengan pola kegiatan Anda.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-400 rounded-full -mr-48 -mt-48 blur-3xl opacity-50"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500 rounded-full -ml-48 -mb-48 blur-3xl opacity-50"></div>
+
+          {/* Footer branding */}
+          <div className="flex items-center justify-between text-zinc-400 text-[9px] font-black uppercase tracking-widest">
+            <span>© 2026 JADWALPRO CO.</span>
+            <span>CRAFTED FOR PEAK PERFORMANCE</span>
+          </div>
+        </div>
+
+        {/* Right Side: Futuristic Dark Preview */}
+        <div className="hidden lg:flex flex-1 bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-12 xl:p-16 items-center justify-center relative overflow-hidden">
+          {/* Subtle Ambient Glows */}
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -mr-32 -mt-32"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] -ml-32 -mb-32"></div>
+          <div className="absolute w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[120px] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+
+          {/* Live Mockup Interface Grid */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.96, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative z-10 w-full max-w-xl bg-zinc-900/60 backdrop-blur-xl rounded-[2.5rem] border border-zinc-800 shadow-2xl p-6 select-none"
+          >
+            {/* Window control bar */}
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-zinc-800/80">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 rounded-full bg-red-400/80"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400/80"></div>
+                <div className="w-3 h-3 rounded-full bg-emerald-400/80"></div>
+              </div>
+              <div className="bg-zinc-800/50 border border-zinc-700/30 rounded-xl px-4 py-1 text-[10px] text-zinc-500 font-mono tracking-tight w-64 text-center">
+                app.jadwalpro.com
+              </div>
+              <div className="w-12"></div>
+            </div>
+
+            {/* Layout simulation */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              
+              {/* Box 1: Dynamic AI Dialog simulation */}
+              <div className="md:col-span-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-5 text-white relative overflow-hidden shadow-lg shadow-blue-900/20">
+                <div className="relative z-10 space-y-2.5">
+                  <div className="flex items-center space-x-2">
+                    <div className="p-1 bg-white/20 rounded-lg">
+                      <Sparkles size={14} className="text-yellow-300" />
+                    </div>
+                    <span className="text-[9px] font-black uppercase tracking-widest opacity-90 font-display">AI PRO INSIGHT</span>
+                  </div>
+                  <p className="text-sm font-bold leading-snug font-display">
+                    "Hari ini alokasi waktu Anda sangat seimbang. Selesaikan deep work Anda sebelum jam 11 siang untuk fokus paling optimal."
+                  </p>
+                </div>
+                <div className="absolute top-1/2 right-0 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
+              </div>
+
+              {/* Box 2: Elegant Schedule Items */}
+              <div className="bg-zinc-800/40 border border-zinc-800 rounded-2xl p-5 space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest font-display">Agenda Terencana</span>
+                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                </div>
+
+                <div className="space-y-2.5">
+                  <div className="p-2.5 bg-zinc-950/40 border border-zinc-800/80 rounded-xl flex items-center justify-between">
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-black text-white">09:00 Deep Work: UI Kit</p>
+                      <span className="text-[8px] bg-blue-950 text-blue-400 border border-blue-900/30 px-1.5 py-0.5 rounded shadow-sm font-black uppercase">WORK</span>
+                    </div>
+                  </div>
+
+                  <div className="p-2.5 bg-zinc-950/40 border border-zinc-800/80 rounded-xl flex items-center justify-between">
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-black text-white">14:00 Rakat Tim Desain</p>
+                      <span className="text-[8px] bg-purple-950 text-purple-400 border border-purple-900/30 px-1.5 py-0.5 rounded shadow-sm font-black uppercase">PERSONAL</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Box 3: Modern Analytics preview */}
+              <div className="bg-zinc-800/40 border border-zinc-800 rounded-2xl p-5 flex flex-col justify-between h-44">
+                <div className="space-y-1">
+                  <span className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.15em] font-display">Efisiensi Mingguan</span>
+                  <p className="text-3xl font-black font-display text-white mt-1">84%</p>
+                  <span className="text-[9px] text-emerald-400 font-bold leading-none">+12% dari minggu lalu</span>
+                </div>
+
+                <div className="space-y-3">
+                  <div className="w-full h-2 bg-zinc-900 rounded-full overflow-hidden">
+                    <div className="h-full bg-emerald-500 rounded-full w-[84%]"></div>
+                  </div>
+
+                  <div className="flex justify-between items-center text-[9px] font-bold text-zinc-500">
+                    <span>Low</span>
+                    <span>Target Target</span>
+                    <span>Peak</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </motion.div>
         </div>
       </div>
     );
