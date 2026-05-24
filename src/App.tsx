@@ -435,13 +435,13 @@ export default function App() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="h-16 bg-white border-b border-zinc-200 flex items-center justify-between px-6 shrink-0">
-          <div className="flex items-center bg-zinc-100 px-4 py-2 rounded-2xl border border-zinc-200 w-80 lg:w-96 transition-all focus-within:w-[420px] focus-within:shadow-sm">
-            <Search size={16} className="text-zinc-400 mr-2" />
+        <header className="h-18 md:h-16 bg-white border-b border-zinc-200 flex items-center justify-between px-4 sm:px-6 shrink-0">
+          <div className="flex items-center bg-zinc-100 px-4 py-2.5 rounded-2xl border border-zinc-200 w-[60%] sm:w-72 md:w-80 lg:w-96 transition-all sm:focus-within:w-[320px] md:focus-within:w-[420px] focus-within:shadow-md">
+            <Search size={18} className="text-zinc-400 mr-2 shrink-0" />
             <input 
               type="text" 
               placeholder="Cari agenda..." 
-              className="bg-transparent border-none outline-none text-xs w-full font-medium"
+              className="bg-transparent border-none outline-none text-sm md:text-xs w-full font-bold text-zinc-900 placeholder-zinc-400"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               id="search-input"
@@ -453,18 +453,18 @@ export default function App() {
               <p className="text-xs font-bold">{format(new Date(), 'EEEE, d MMMM', { locale: id })}</p>
               <p className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">Minggu ke-{format(new Date(), 'w')}</p>
             </div>
-            <div className="flex items-center space-x-3 pl-4 lg:pl-6 border-l border-zinc-200">
-              <img src={user.photoURL || ''} alt="User" className="w-8 h-8 rounded-full border-2 border-white shadow-sm" />
+            <div className="flex items-center space-x-3 pl-3 sm:pl-4 lg:pl-6 border-l border-zinc-200">
+              <img src={user.photoURL || ''} alt="User" className="w-10 h-10 sm:w-9 sm:h-9 md:w-8 md:h-8 rounded-full border-2 border-white shadow-lg cursor-pointer hover:scale-105 transition-all" />
             </div>
           </div>
         </header>
 
         {/* Bento Grid Area */}
-        <div className="flex-1 p-5 overflow-y-auto custom-scrollbar">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="flex-1 p-4 sm:p-5 pb-32 md:pb-5 overflow-y-auto custom-scrollbar">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 sm:grid-cols-3 sm:gap-5">
             
             {/* Action Bar (Top Full Width) */}
-            <div className="md:col-span-3 flex items-center justify-between mb-1">
+            <div className="md:col-span-3 flex items-center justify-between mb-2">
               <div>
                 <h2 className="text-2xl font-black text-zinc-900 font-display">
                   {view === 'calendar' ? 'Alur Waktu' : view === 'stats' ? 'Analisis' : 'Semua Tugas'}
@@ -473,10 +473,10 @@ export default function App() {
               </div>
               <button 
                 onClick={() => { setEditingItem(undefined); setIsFormOpen(true); }}
-                className="bg-zinc-900 text-white px-5 py-2.5 rounded-2xl text-xs font-bold flex items-center space-x-2 hover:bg-black transition-all shadow-xl shadow-zinc-200"
+                className="bg-zinc-900 text-white px-5 py-3 sm:py-2.5 rounded-2xl text-sm sm:text-xs font-bold flex items-center space-x-2 hover:bg-black transition-all shadow-xl shadow-zinc-200 active:scale-95 shrink-0"
                 id="add-task-header-btn"
               >
-                <Plus size={16} />
+                <Plus size={18} />
                 <span>TAMBAH JADWAL</span>
               </button>
             </div>
@@ -654,6 +654,42 @@ export default function App() {
           </div>
         </div>
       </main>
+
+      {/* Mobile Floating Bottom Navigation Bar */}
+      <div className="md:hidden fixed bottom-6 left-4 right-4 z-40 bg-zinc-900/95 backdrop-blur-md rounded-3xl border border-zinc-800 shadow-[0_12px_36px_-5px_rgba(0,0,0,0.3)] px-5 py-2 flex items-center justify-around">
+        {[
+          { id: 'calendar', icon: CalendarIcon, label: 'Kalender' },
+          { id: 'list', icon: CheckSquare, label: 'Tugas' },
+          { id: 'stats', icon: StatsIcon, label: 'Statistik' }
+        ].map((item) => {
+          const isActive = view === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setView(item.id as any)}
+              className="flex flex-col items-center justify-center p-2 rounded-2xl transition-all relative active:scale-90"
+              style={{ minWidth: '4.5rem' }}
+            >
+              <item.icon size={22} className={isActive ? 'text-blue-400' : 'text-zinc-500'} />
+               <span className={`text-[10px] mt-1 font-bold ${isActive ? 'text-white font-extrabold' : 'text-zinc-500'}`}>
+                {item.label}
+              </span>
+              {isActive && (
+                <div className="absolute -bottom-1 w-1 h-1 rounded-full bg-blue-400" />
+              )}
+            </button>
+          );
+        })}
+        {/* Mobile Logout Option */}
+        <button
+          onClick={logout}
+          className="flex flex-col items-center justify-center p-2 rounded-2xl text-zinc-500 active:text-red-400 active:scale-90"
+          style={{ minWidth: '4.5rem' }}
+        >
+          <LogOut size={22} />
+          <span className="text-[10px] mt-1 font-bold">Keluar</span>
+        </button>
+      </div>
 
       {/* Modals */}
       <AnimatePresence>

@@ -59,19 +59,19 @@ export default function TaskForm({ onClose, onSave, initialData, selectedDate }:
   };
 
   return (
-    <div className="fixed inset-0 bg-zinc-900/40 backdrop-blur-md z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white w-full max-w-2xl rounded-[2.5rem] shadow-2xl overflow-hidden border border-zinc-200" id="task-form-container">
-        <div className="px-8 py-6 bg-zinc-50 border-b border-zinc-100 flex items-center justify-between">
+    <div className="fixed inset-0 bg-zinc-900/40 backdrop-blur-md z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+      <div className="bg-white w-full max-w-2xl rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl overflow-hidden border border-zinc-200" id="task-form-container">
+        <div className="px-5 py-4 sm:px-8 sm:py-6 bg-zinc-50 border-b border-zinc-100 flex items-center justify-between">
           <div>
-            <h3 className="text-2xl font-black text-zinc-900 font-display">{initialData ? 'Edit Jadwal' : 'Buat Jadwal Baru'}</h3>
-            <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-1">Konfigurasi Agenda Terperinci</p>
+            <h3 className="text-xl sm:text-2xl font-black text-zinc-900 font-display">{initialData ? 'Edit Jadwal' : 'Buat Jadwal Baru'}</h3>
+            <p className="text-[9px] sm:text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-1">Konfigurasi Agenda Terperinci</p>
           </div>
-          <button onClick={onClose} className="p-3 hover:bg-zinc-200 rounded-2xl transition-all" id="close-form-btn">
+          <button onClick={onClose} className="p-2.5 sm:p-3 hover:bg-zinc-200 rounded-2xl transition-all" id="close-form-btn">
             <X size={20} className="text-zinc-500" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-8 space-y-8">
+        <form onSubmit={handleSubmit} className="p-5 sm:p-8 space-y-5 sm:space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3 md:col-span-2">
               <label className="block text-[10px] font-black text-zinc-400 uppercase tracking-widest ml-1">Judul Kegiatan</label>

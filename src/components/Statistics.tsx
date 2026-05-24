@@ -38,8 +38,8 @@ export default function Statistics({ items }: StatsProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8" id="stats-container">
-      <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-zinc-200">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8" id="stats-container">
+      <div className="bg-white p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] shadow-sm border border-zinc-200">
         <h4 className="text-xs font-black text-zinc-400 mb-6 uppercase tracking-[0.2em] font-display">Alokasi Kategori</h4>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">
@@ -67,7 +67,7 @@ export default function Statistics({ items }: StatsProps) {
         </div>
       </div>
 
-      <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-zinc-200">
+      <div className="bg-white p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] shadow-sm border border-zinc-200">
         <h4 className="text-xs font-black text-zinc-400 mb-6 uppercase tracking-[0.2em] font-display">Tingkat Prioritas</h4>
         <div className="h-72">
           <ResponsiveContainer width="100%" height="100%">

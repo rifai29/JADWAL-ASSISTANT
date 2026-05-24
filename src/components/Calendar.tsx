@@ -75,14 +75,14 @@ export default function Calendar({ onDateSelect, selectedDate, items }: Calendar
         days.push(
           <div
             key={day.toString()}
-            className={`relative min-h-[90px] border-r border-b border-zinc-50 flex flex-col p-2 cursor-pointer transition-all hover:bg-blue-50/50 ${
+            className={`relative min-h-[82px] sm:min-h-[95px] border-r border-b border-zinc-50 flex flex-col p-1.5 sm:p-2 cursor-pointer transition-all hover:bg-blue-50/50 ${
               !isCurrentMonth ? "bg-zinc-50/30" : "bg-white"
             } ${isSelected ? "bg-blue-50/80 ring-2 ring-blue-600 ring-inset" : ""}`}
             onClick={() => onDateSelect(cloneDay)}
             id={`calendar-cell-${format(day, 'yyyy-MM-dd')}`}
           >
-            <span className={`text-[10px] font-bold ml-1 mt-0.5 ${
-              !isCurrentMonth ? "text-zinc-300" : isSameDay(day, new Date()) ? "text-blue-600 font-black" : "text-zinc-900"
+            <span className={`text-[11px] sm:text-[10px] font-black ml-1.5 sm:ml-1 mt-0.5 sm:mt-1 ${
+              !isCurrentMonth ? "text-zinc-300" : isSameDay(day, new Date()) ? "text-blue-600 font-extrabold" : "text-zinc-900"
             }`}>
               {formattedDate}
             </span>
