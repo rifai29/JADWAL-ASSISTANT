@@ -75,7 +75,7 @@ export default function Calendar({ onDateSelect, selectedDate, items }: Calendar
         days.push(
           <div
             key={day.toString()}
-            className={`relative min-h-[82px] sm:min-h-[95px] border-r border-b border-zinc-50 flex flex-col p-1.5 sm:p-2 cursor-pointer transition-all hover:bg-blue-50/50 ${
+            className={`relative min-h-[82px] sm:min-h-[95px] lg:min-h-[115px] xl:min-h-[135px] border-r border-b border-zinc-50 flex flex-col p-1.5 sm:p-2 cursor-pointer transition-all hover:bg-blue-50/50 ${
               !isCurrentMonth ? "bg-zinc-50/30" : "bg-white"
             } ${isSelected ? "bg-blue-50/80 ring-2 ring-blue-600 ring-inset" : ""}`}
             onClick={() => onDateSelect(cloneDay)}
