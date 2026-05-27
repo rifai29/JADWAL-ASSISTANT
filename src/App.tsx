@@ -435,7 +435,7 @@ export default function App() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="h-18 md:h-16 bg-white border-b border-zinc-200 flex items-center justify-between px-4 sm:px-6 shrink-0">
+        <header className="h-18 md:h-16 bg-white border-b border-zinc-200 flex items-center justify-start gap-4 sm:gap-6 px-4 sm:px-6 shrink-0">
           <div className="flex items-center bg-zinc-100 px-4 py-2.5 rounded-2xl border border-zinc-200 w-[60%] sm:w-72 md:w-80 lg:w-96 transition-all sm:focus-within:w-[320px] md:focus-within:w-[420px] focus-within:shadow-md">
             <Search size={18} className="text-zinc-400 mr-2 shrink-0" />
             <input 
@@ -448,8 +448,8 @@ export default function App() {
             />
           </div>
 
-          <div className="flex items-center space-x-4 lg:space-x-6">
-            <div className="text-right hidden lg:block">
+          <div className="flex items-center space-x-4 lg:space-x-6 ml-2">
+            <div className="text-left hidden lg:block">
               <p className="text-xs font-bold">{format(new Date(), 'EEEE, d MMMM', { locale: id })}</p>
               <p className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">Minggu ke-{format(new Date(), 'w')}</p>
             </div>
